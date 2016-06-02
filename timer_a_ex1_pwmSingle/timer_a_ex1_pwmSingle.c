@@ -59,8 +59,9 @@
 //******************************************************************************
 #include "driverlib.h"
 
-#define TIMER_A_PERIOD 524
-#define DUTY_CYCLE  393
+// Macros used for varying brightness of LED
+#define TIMER_A_PERIOD 15000000 // Default: 524
+#define DUTY_CYCLE  1000000     // Default: 393
 
 void main(void)
 {
@@ -83,7 +84,7 @@ void main(void)
     //Generate PWM - Timer runs in Up-Down mode
     Timer_A_outputPWMParam param = {0};
     param.clockSource = TIMER_A_CLOCKSOURCE_SMCLK;
-    param.clockSourceDivider = TIMER_A_CLOCKSOURCE_DIVIDER_1;
+    param.clockSourceDivider = TIMER_A_CLOCKSOURCE_DIVIDER_24; // TIMER_A_CLOCKSOURCE_DIVIDER_1;
     param.timerPeriod = TIMER_A_PERIOD;
     param.compareRegister = TIMER_A_CAPTURECOMPARE_REGISTER_1;
     param.compareOutputMode = TIMER_A_OUTPUTMODE_RESET_SET;
